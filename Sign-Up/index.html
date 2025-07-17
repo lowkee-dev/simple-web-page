@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <!-- Cdnjs Link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- custom css link -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-image: url(/Sign-In/images/IMG_3414.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .navbar {
+        color: white;
+        text-decoration: none;
+        padding: 2rem;
+        margin-top: 10px;
+      }
+      .navbar span {
+        color: aqua;
+      }
+      .container {
+        margin: 100px auto;
+        width: 360px;
+        height: 550px;
+        padding: 50px;
+        text-align: center;
+        border: 1px solid black;
+        border-radius: 10px;
+        background-color: aliceblue;
+      }
+      .container h3 {
+        margin-top: 10px;
+        margin-bottom: 8px;
+      }
+      .container .form input {
+        width: 250px;
+        border: none;
+        border-bottom: 1px solid #ccc;
+        margin-top: 30px;
+        padding: 8px;
+      }
+      .container button {
+        margin-top: 35px;
+        margin-bottom: 20px;
+        border: none;
+        background-color: blue;
+        padding: 8px 100px;
+        color: white;
+      }
+      .container button:hover {
+        background-color: rgb(41, 83, 233);
+      }
+      .container h5 {
+        font-weight: 100;
+        margin-bottom: 8px;
+        margin-top: 25px;
+        font-size: small;
+      }
+      .container h4 {
+        font-weight: 100;
+        font-size: 15px;
+      }
+      .container .form i {
+        margin-bottom: 50px;
+        font-size: 30px;
+        letter-spacing: 10px;
+        color: rgb(0, 94, 255);
+      }
+      .container a {
+        text-decoration: none;
+        color: rgb(25, 80, 190);
+      }
+      .container a:hover {
+        color: rgb(0, 94, 255);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <h3>My <span>Code</span></h3>
+    </div>
+    <div class="container">
+      <h3>Sign Up</h3>
+      <p>Sign up to continue</p>
+      <form class="form" method="get" id="myForm" enctype="multipart/form">
+        <label for="name">
+          <input type="text" id="name" name="name" required placeholder="Name" />
+        </label>
+        <label for="email">
+          <input type="email" id="email" name="email" placeholder="Email" />
+        </label>
+        <label for="password">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            placeholder="Password"
+          />
+        </label>
+        <label for="confirmPassword">
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            required
+            placeholder="Confirm Password"
+          />
+        </label>
+        <button type="submit">Sign up</button>
+        <small id="message"></small>
+        <h5>Or</h5>
+        <i class="fa-brands fa-facebook"></i>
+        <i class="fa-brands fa-twitter"></i>
+        <i class="fa-brands fa-google"></i>
+        <h4>
+          Already have an account? <a href="/Sign-In/index.html">SIGN IN</a>
+        </h4>
+      </form>
+    </div>
+
+    <script>
+      function submitForm() {
+        document.forms["myForm"].submit();
+        console.log("Form has been submitted");
+      }
+
+      document.forms["myForm"].addEventListener("submit", (e) => {
+        e.preventDefault(); //this will prevent the default form submission
+        const name = document.getElementById("name").value.trim();
+        const password = document.getElementById("password").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const confirmPassword = document
+          .getElementById("confirmPassword")
+          .value.trim();
+        const message = document.getElementById("message");
+
+        if (
+          name === "" ||
+          password === "" ||
+          email === "" ||
+          confirmPassword === ""
+        ) {
+          message.textContent = "Fill in all fields";
+          message.style.color = "red";
+          return;
+        }
+        if (password !== confirmPassword) {
+          message.textContent = "Passwords do not match";
+        }
+        if (email.includes("@")) {
+          message.textContent = "Please input a valid email address ";
+        }
+        document
+          .getElementById("myForm")
+          .submit(alert("Registration successfully"));
+      });
+    </script>
+  </body>
+</html>
